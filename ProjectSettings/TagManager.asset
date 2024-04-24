@@ -4,13 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - moveable
-  - destination
+  - start
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Terrain
+  - 
   - Water
   - UI
   - 
@@ -40,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 4141449933
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
