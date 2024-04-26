@@ -12,9 +12,21 @@ public class Teleportation : MonoBehaviour
         
     }
 
+    bool VictoryCheck()
+    {
+        GameObject[] goal = GameObject.FindGameObjectsWithTag("Objective");
+        if (goal.Length == 0)
+        {
+            Debug.Log("Victory");
+            return true;
+        }
+
+        return false;
+    }
     // Update is called once per frame
     void Update()
     {
+        VictoryCheck();
         if (teleBox)
         {
             if (Input.GetMouseButtonDown(0))
@@ -54,5 +66,6 @@ public class Teleportation : MonoBehaviour
             }
         }
        
+        
     }
 }
