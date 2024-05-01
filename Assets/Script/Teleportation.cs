@@ -14,7 +14,9 @@ public class Teleportation : MonoBehaviour
     private int teleCount = 0; // the current use of teleportation ( if we exceed the number of teleportation counts the player fails) 
     private bool isWin = false; // if the playercompletes the level 
     private bool isLose = false;// if the player fails the level
-    private float time;// the current time count for the level
+    private float timer = 0;// the current time count for the level
+    private float loseTimer = -1;// the time the player finish the final teleport
+    [SerializeField] private int loseInterval = 3; // the interval count to player losing the level
 
     public GameObject TeleBox => teleBox;
 
@@ -31,7 +33,7 @@ public class Teleportation : MonoBehaviour
         }
         else
         {
-            if (teleMax <= teleCount) // if the number of used teleport greater than or equals  the maximum allowed teleportation 
+            if (teleMax <= teleCount && loseTimer+2<=timer && loseTimer>0) // if the number of used teleport greater than or equals  the maximum allowed teleportation 
             {
                 isLose = true; //the player losses
             }
@@ -40,13 +42,13 @@ public class Teleportation : MonoBehaviour
 
     private void Start()
     {
-        time = 0;
+        timer = 0;
     }
 
     // Update is called once per frame
     void Update()// for the rest of the frames 
     {
-        time += Time.deltaTime;// updating the the counter for the time passed
+        timer += Time.deltaTime;// updating the the counter for the time passed
         VictoryCheck(); // check for victory every frame, this function is called every frame
         if (teleBox)// if this variable is not null
         {
@@ -68,7 +70,11 @@ public class Teleportation : MonoBehaviour
                 worldMousePos.z = 0f;
                 teleBox.transform.position = worldMousePos; // actual teleporting
                 teleBox = null;
-                teleUsed(); //  increase the county calling the telportation counter method
+                teleUsed(); //  increase the counter using the teleportation counter method
+                if (teleCount <= teleMax)
+                {
+                    loseTimer = timer;
+                }
             }
         }
         else // if teleBox is null, meaning you have not select any box to teleport
@@ -100,6 +106,8 @@ public class Teleportation : MonoBehaviour
         if (isLose)
         {
             Debug.Log("You lose");
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
         }
         
     }

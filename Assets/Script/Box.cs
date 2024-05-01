@@ -20,9 +20,9 @@ public class Box : MonoBehaviour{
     private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log(other.gameObject.tag);
-        if (other.gameObject.tag == "Objective" &&
-            this.gameObject.tag == "moveable")
+        if (this.gameObject.tag == "moveable")
         {
+            if (other.gameObject.tag == "Objective" || other.gameObject.tag=="bonus")
             Destroy(other.gameObject);
         }
             

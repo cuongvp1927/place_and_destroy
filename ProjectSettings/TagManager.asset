@@ -7,6 +7,8 @@ TagManager:
   - moveable
   - destination
   - Objective
+  - teleLocate
+  - bonus
   layers:
   - Default
   - TransparentFX
