@@ -100,14 +100,14 @@ public class Teleportation : MonoBehaviour
         if (isWin)
         {
             Debug.Log("You win");
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            // string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene("WinScene");
         }
         if (isLose)
         {
             Debug.Log("You lose");
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            // string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene("LoseScene");
         }
         
     }
