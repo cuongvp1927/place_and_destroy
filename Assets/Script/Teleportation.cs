@@ -19,6 +19,7 @@ public class Teleportation : MonoBehaviour
     [SerializeField] private int loseInterval = 3; // the interval count to player losing the level
 
     public GameObject TeleBox => teleBox;
+    public int TeleCount => teleCount;
 
     void teleUsed() // function for increasing the teleportation count 
     {
@@ -101,7 +102,7 @@ public class Teleportation : MonoBehaviour
         {
             Debug.Log("You win");
             // string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene("WinScene");
+            SceneManager.LoadScene("VictoryScene");
         }
         if (isLose)
         {

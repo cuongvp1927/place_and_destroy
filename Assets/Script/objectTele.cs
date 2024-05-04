@@ -35,7 +35,14 @@ public class objectTele : MonoBehaviour
 
     private void teleport(Vector3 loc)
     {
-        teleObject.transform.position = loc;
+        if (teleObject != null)
+        {
+            teleObject.transform.position = loc;
+        }
+        else
+        {
+            Debug.Log("Object has been destroyed or was never there");
+        }
     }
     // Update is called once per frame
     void Update()
