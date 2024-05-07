@@ -62,6 +62,7 @@ public class Teleportation : MonoBehaviour
                 {
                     if (rayHit.collider.gameObject == teleBox)  // allowing me to deselect the box
                     {
+                        teleBox.GetComponent<Box>().ToggleTele();
                         teleBox = null;
                     }
                     return;
@@ -70,6 +71,7 @@ public class Teleportation : MonoBehaviour
                 Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos); // transform mousePos into usable variable
                 worldMousePos.z = 0f;
                 teleBox.transform.position = worldMousePos; // actual teleporting
+                teleBox.GetComponent<Box>().ToggleTele();
                 teleBox = null;
                 teleUsed(); //  increase the counter using the teleportation counter method
                 if (teleCount <= teleMax)
@@ -94,6 +96,8 @@ public class Teleportation : MonoBehaviour
                 {
                     // Debug.Log(rayHit.collider.gameObject.name);
                     teleBox = rayHit.collider.gameObject;
+                    teleBox.GetComponent<Box>().ToggleTele();
+
                 }
             }
         }
