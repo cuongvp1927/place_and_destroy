@@ -16,10 +16,33 @@ public class Box : MonoBehaviour{
     }
 
     public BoxType boxType;
+    
+    private bool isTele = false;
+    private Animator anim;
+
+    public void ToggleTele()
+    {
+        if (anim)
+        {
+            isTele = !isTele;
+            anim.SetBool("isTele", isTele);
+        }
+    }
+
+    private void Start()
+    {
+        anim = gameObject.GetComponent<Animator>();
+        if (anim)
+        {
+            isTele = false;
+            anim.SetBool("isTele", isTele);
+        }
+    }
+    
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.tag);
+        // Debug.Log(other.gameObject.tag);
         if (this.gameObject.tag == "moveable")
         {
             if (other.gameObject.tag == "Objective" || other.gameObject.tag=="bonus")
