@@ -13,7 +13,6 @@ public class Box : MonoBehaviour{
         metal,
         dinamite,
         balloon,
-        random,
     }
 
     public BoxType boxType;
