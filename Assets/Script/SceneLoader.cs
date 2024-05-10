@@ -17,6 +17,11 @@ public class SceneLoader : MonoBehaviour
         
     }
 
+    public void nextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    
     public void reloadScene()
     {
         SceneManager.LoadScene(previousIndex);

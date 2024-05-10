@@ -22,8 +22,8 @@ public class Teleportation : MonoBehaviour
     
     [SerializeField] int teleMax = 1; // maximum number of teleportation 
     private int teleCount = 0; // the current use of teleportation ( if we exceed the number of teleportation counts the player fails) 
-    private bool isWin = false; // if the playercompletes the level 
-    private bool isLose = false;// if the player fails the level
+    public bool isWin = false; // if the playercompletes the level 
+    public bool isLose = false;// if the player fails the level
     private float timer = 0;// the current time count for the level
     private float loseTimer = -1;// the time the player finish the final teleport
     private float teleDone = -1;// the time the player create the final portal, completing a teleport
@@ -133,13 +133,15 @@ public class Teleportation : MonoBehaviour
         {
             Debug.Log("You win");
             // string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene("VictoryScene");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            // SceneManager.LoadScene("VictoryScene");
         }
         if (isLose)
         {
             Debug.Log("You lose");
-            // string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene("LoseScene");
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+            // SceneManager.LoadScene("LoseScene");
         }
         
     }

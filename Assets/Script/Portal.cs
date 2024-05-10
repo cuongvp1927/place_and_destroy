@@ -27,28 +27,14 @@ public class Portal : MonoBehaviour
     void Update()
     {
         cd += Time.deltaTime;
-        if (teleBox)
-        {
-            Debug.Log(gameObject.name);
-            Debug.Log(willTele);
-        }
 
         if (willTele && portalOut.gameObject.GetComponent<Portal>().willTele && teleBox)
         {
             teleBox.transform.position = portalOut.transform.position;
-            // willTele = false;
-            // portalOut.GetComponent<Portal>().willTele = false;
-            // teleBox = null;
-            
-            // if (cd >= cdMax)
-            // {      
-                // willTele = false;
-                // portalOut.GetComponent<Portal>().willTele = false;
-                // portalOut.GetComponent<Portal>().cd = 0;
-                // cd = 0;
-                // teleBox.transform.position = portalOut.transform.position;
-                // teleBox = null;
-            // }
+            willTele = false;
+            portalOut.GetComponent<Portal>().willTele = false;
+            teleBox = null;
+
         }
 
     }
