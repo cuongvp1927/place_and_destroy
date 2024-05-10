@@ -159,13 +159,13 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
   m_FocalLength: 50
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
   m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -673,7 +673,8 @@ MonoBehaviour:
   m_text: Select level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d29c57e633d4fca47848100efab50d12, type: 2}
-  m_sharedMaterial: {fileID: -3379889633815919104, guid: d29c57e633d4fca47848100efab50d12, type: 2}
+  m_sharedMaterial: {fileID: -3379889633815919104, guid: d29c57e633d4fca47848100efab50d12,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -807,7 +808,8 @@ MonoBehaviour:
   m_text: So you failed.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d29c57e633d4fca47848100efab50d12, type: 2}
-  m_sharedMaterial: {fileID: -3379889633815919104, guid: d29c57e633d4fca47848100efab50d12, type: 2}
+  m_sharedMaterial: {fileID: -3379889633815919104, guid: d29c57e633d4fca47848100efab50d12,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -939,7 +941,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   m_Color: {r: 0.21698111, g: 0.10744057, b: 0.0069597573, a: 0.38431373}
   m_FlipX: 0
   m_FlipY: 0
@@ -1063,8 +1066,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1798451044}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: SceneLoad
-        m_Mode: 5
+        m_MethodName: reloadScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1171,7 +1174,8 @@ MonoBehaviour:
   m_text: Never fear, failure is the first step to success
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f46253a022a6ef74c994b4ce27933990, type: 2}
-  m_sharedMaterial: {fileID: -7657769775541786749, guid: f46253a022a6ef74c994b4ce27933990, type: 2}
+  m_sharedMaterial: {fileID: -7657769775541786749, guid: f46253a022a6ef74c994b4ce27933990,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1253,51 +1257,63 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.085660264
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.8349482
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.054978274
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239000, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7287804790790239001, guid: 35bf491e3067eff4caad0bc89f9547b9, type: 3}
+    - target: {fileID: 7287804790790239001, guid: 35bf491e3067eff4caad0bc89f9547b9,
+        type: 3}
       propertyPath: m_Name
       value: background
       objectReference: {fileID: 0}
@@ -1434,7 +1450,8 @@ MonoBehaviour:
   m_text: Select level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d29c57e633d4fca47848100efab50d12, type: 2}
-  m_sharedMaterial: {fileID: -3379889633815919104, guid: d29c57e633d4fca47848100efab50d12, type: 2}
+  m_sharedMaterial: {fileID: -3379889633815919104, guid: d29c57e633d4fca47848100efab50d12,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1568,7 +1585,8 @@ MonoBehaviour:
   m_text: Try again
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d29c57e633d4fca47848100efab50d12, type: 2}
-  m_sharedMaterial: {fileID: -3379889633815919104, guid: d29c57e633d4fca47848100efab50d12, type: 2}
+  m_sharedMaterial: {fileID: -3379889633815919104, guid: d29c57e633d4fca47848100efab50d12,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
