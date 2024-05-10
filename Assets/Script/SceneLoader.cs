@@ -4,25 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
+{
+    private string previousSceneName;
 
-{private  int previousIndex;
-
-
-
-    private void Start()
+    void Start()
     {
-        previousIndex = SceneManager.GetActiveScene().buildIndex - 1;
+
     }
 
-
-    public void SceneLoad(string sceneName)
+    // 在场景切换时调用，保存当前场景的名称作为上一个场景的名称
+    void OnDisable()
     {
-        SceneManager.LoadScene(sceneName);
-        
-    }
-
-    public void reloadScene()
-    {
-        SceneManager.LoadScene(previousIndex);
+        PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
+        PlayerPrefs.Save();
     }
 }

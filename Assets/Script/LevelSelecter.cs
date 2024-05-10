@@ -30,4 +30,8 @@ public class startmenu : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial Scn");
     }
+    public void levelSelectScn()
+    {
+        SceneManager.LoadScene("LevelSelectScn");
+    }
 }

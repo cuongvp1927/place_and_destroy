@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 885756907}
   - component: {fileID: 885756906}
   - component: {fileID: 885756905}
-  - component: {fileID: 885756904}
+  - component: {fileID: 885756908}
   m_Layer: 5
   m_Name: LevelSelectorBtn (1)
   m_TagString: Untagged
@@ -360,19 +360,6 @@ RectTransform:
   m_AnchoredPosition: {x: 17, y: -340}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &885756904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885756902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85ef578d6db868c46a877481d306eec9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previousIndex: 0
 --- !u!114 &885756905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,10 +404,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 885756904}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: SceneLoad
-        m_Mode: 5
+      - m_Target: {fileID: 885756908}
+        m_TargetAssemblyTypeName: startmenu, Assembly-CSharp
+        m_MethodName: levelSelectScn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -467,6 +454,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885756902}
   m_CullTransparentMesh: 1
+--- !u!114 &885756908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885756902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8821d9c8ce965e4584ac67ae09cef06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &942618029
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +830,7 @@ GameObject:
   - component: {fileID: 1798451047}
   - component: {fileID: 1798451046}
   - component: {fileID: 1798451045}
+  - component: {fileID: 1798451049}
   - component: {fileID: 1798451044}
   - component: {fileID: 1798451048}
   m_Layer: 5
@@ -872,7 +872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ef578d6db868c46a877481d306eec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousIndex: 1
 --- !u!114 &1798451045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,9 +916,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1798451044}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: reloadScene
+      - m_Target: {fileID: 1798451049}
+        m_TargetAssemblyTypeName: reutrnPreviousScene, Assembly-CSharp
+        m_MethodName: ReturnToPreviousScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -988,6 +987,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1798451049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798451042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ff8980e0a42d448ac0ba0d04989133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1879655016
 GameObject:
   m_ObjectHideFlags: 0
