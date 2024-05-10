@@ -332,6 +332,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &703768992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2211255323786860210, guid: cda0a60c5717fe244bc584f592e2d153, type: 3}
+  m_PrefabInstance: {fileID: 899605437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &899605437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1810,7 +1815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorBoxes:
   - nextTimer: 1
-    preFab: {fileID: 1928185054}
+    preFab: {fileID: 703768992}
   - nextTimer: 1
     preFab: {fileID: 1452300630}
   - nextTimer: 1

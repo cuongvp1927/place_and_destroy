@@ -21,7 +21,7 @@ public class BoxChangeColor : MonoBehaviour
         // deactivate anyother prefab
         foreach (var box in colorBoxes)
         {
-            if (box.preFab.tag != "Objective")
+            if (!box.preFab.CompareTag("Objective"))
             {                
                 box.preFab.SetActive(false);
             }
@@ -40,14 +40,13 @@ public class BoxChangeColor : MonoBehaviour
         // deactivate anyother prefab
         foreach (var box in colorBoxes)
         {
-            if (box.preFab.tag != "Objective")
+            if (!box.preFab.CompareTag("Objective"))
             {
                 box.preFab.SetActive(false);
             }
         }
         /// activate the original prefab
         colorBoxes[0].preFab.SetActive(true);
-
     }
 
     // Update is called once per frame
