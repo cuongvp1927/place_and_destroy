@@ -9,6 +9,7 @@ TagManager:
   - Objective
   - teleLocate
   - bonus
+  - portal
   layers:
   - Default
   - TransparentFX
