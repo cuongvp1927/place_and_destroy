@@ -5,8 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] private  int previousIndex;
+    private void Start()
+    {
+        previousIndex = SceneManager.GetActiveScene().buildIndex - 1;
+    }
+
     public void SceneLoad(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        
+    }
+
+    public void reloadScene()
+    {
+        SceneManager.LoadScene(previousIndex);
     }
 }
