@@ -126,65 +126,9 @@ public class Teleportation : MonoBehaviour
                         }
                     }
                 }
-
-
-                // teleBox.transform.position = worldMousePos; // actual teleporting
             }
         }
-
-
         
-        // if (teleBox)// if this variable is not null
-        // {
-        //     if (Input.GetMouseButtonDown(0))  // on left-click 
-        //     { 
-        //         Vector3 mousePos = Input.mousePosition;// take the position of the mouse and storing t 
-        //         Ray camRay = Camera.main.ScreenPointToRay(mousePos);// the position is translated to a place on the screen 
-        //         var rayHit = Physics2D.GetRayIntersection(camRay); // using the position to see any object with the collider
-        //         if (rayHit.collider)
-        //         {
-        //             if (rayHit.collider.gameObject == teleBox)  // allowing me to deselect the box
-        //             {
-        //                 teleBox.GetComponent<Box>().ToggleTele();
-        //                 teleBox = null;
-        //             }
-        //             return;
-        //         };
-        //         
-        //         Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos); // transform mousePos into usable variable
-        //         worldMousePos.z = 0f;
-        //         teleBox.transform.position = worldMousePos; // actual teleporting
-        //         teleBox.GetComponent<Box>().ToggleTele();
-        //         teleBox = null;
-        //         teleUsed(); //  increase the counter using the teleportation counter method
-        //         if (teleCount >= teleMax)
-        //         {
-        //             loseTimer = timer;
-        //         }
-        //     }
-        // }
-        // else // if teleBox is null, meaning you have not select any box to teleport
-        // {
-        //     if (Input.GetMouseButtonDown(0) && (teleMax > teleCount))
-        //     {
-        //         Vector3 mousePos = Input.mousePosition;
-        //         Ray camRay = Camera.main.ScreenPointToRay(mousePos);
-        //         var rayHit = Physics2D.GetRayIntersection(camRay);
-        //         if (!rayHit.collider)
-        //         {
-        //             return;
-        //         }
-        //
-        //         if (rayHit.collider.gameObject.tag == "moveable") //  checking the clicking box has tag "movable"
-        //         {
-        //             // Debug.Log(rayHit.collider.gameObject.name);
-        //             teleBox = rayHit.collider.gameObject;
-        //             teleBox.GetComponent<Box>().ToggleTele();
-        //
-        //         }
-        //     }
-        // }
-
         if (isWin)
         {
             Debug.Log("You win");

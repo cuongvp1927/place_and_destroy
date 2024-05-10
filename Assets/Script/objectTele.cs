@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class objectTele : MonoBehaviour
@@ -8,55 +9,78 @@ public class objectTele : MonoBehaviour
     public struct teleZone
     {
         public float teleTime;
-        public Transform teleLoc;
+        public Transform Portal1Loc;
+        public Transform Portal2Loc;
+        private GameObject portal1;
+        private GameObject portal2;
     }
-    
-    private float timer;
-    private GameObject teleObject;
-    // [SerializeField] private List<Transform> teleLocate;
-    // [SerializeField] private List<int> teleTime;
-    // private Dictionary<int, int> teleMap = new Dictionary<int, int>();
     public List<teleZone> teleZones;
+    [SerializeField] private float delayTime = 0.5f;
+    [SerializeField] private float destroyTime = 0.5f;
+
+    private float timer;
+    // private GameObject teleObject;
+    private List<GameObject> portalList;
+    [SerializeField] private GameObject portal1Instant;
+    [SerializeField] private GameObject portal2Instant;
     private int curr = 0;
     
+    private GameObject CreatePortal(GameObject portal,Transform loc)
+    {
+        return Instantiate(portal, loc.position, Quaternion.identity);
+    }
     // Start is called before the first frame update
     void Start()
     {
         timer = 99;
-        foreach (Transform child in this.transform)
-        {
-            if (child.tag == "Objective")
-            {
-                teleObject = child.gameObject;
-                break;
-            }
-        }
+        curr = teleZones.Count-1;
     }
 
-    private void teleport(Vector3 loc)
-    {
-        if (teleObject != null)
-        {
-            teleObject.transform.position = loc;
-        }
-        else
-        {
-            Debug.Log("Object has been destroyed or was never there");
-        }
-    }
+    private GameObject token1;
+    private GameObject token2;
+    private bool canTele = true;
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
         if (timer >= teleZones[curr].teleTime)
         {
-            teleport(teleZones[curr].teleLoc.position);
-            curr++;
-            if (curr >= teleZones.Count)
+            if (!token1)
             {
-                curr = 0;
+                token1 = CreatePortal(portal1Instant,teleZones[curr].Portal1Loc);
             }
-            timer = 0;
+            
+            if (timer >= teleZones[curr].teleTime + delayTime)
+            {
+                if (!token2)
+                {
+                    token2 = CreatePortal(portal2Instant, teleZones[curr].Portal2Loc);
+                }
+
+                if (token1 && token2 && canTele)
+                {
+                    token2.GetComponent<Portal>().portalOut = token1;
+                    token1.GetComponent<Portal>().portalOut = token2;
+                    
+                    token1.GetComponent<Portal>().willTele = true;
+                    token2.GetComponent<Portal>().willTele = true;
+                    canTele = false;
+                }
+
+                if (timer >= teleZones[curr].teleTime + delayTime + destroyTime)
+                {
+                    Destroy(token1);
+                    Destroy(token2);
+                    curr++;
+                    canTele = true;
+                    // reset curr to the start of the array
+                    if (curr >= teleZones.Count)
+                    {
+                        curr = 0;
+                    }
+                    timer = 0;
+                }
+            }
         }
     }
 }

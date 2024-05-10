@@ -7,15 +7,15 @@ public class Portal : MonoBehaviour
 {
     [HideInInspector] public GameObject portalOut = null;
 
-    // private float cd;
-    // [SerializeField] private float cdMax = 1;
+    public float cd;
+    [SerializeField] private float cdMax = 1;
     [HideInInspector] public bool willTele;
     private GameObject teleBox = null;
     
     // Start is called before the first frame update
     void Start()
     {
-        // cd = cdMax;
+        cd = 99;
         willTele = false;
     }
 
@@ -26,17 +26,30 @@ public class Portal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (portalOut.gameObject.GetComponent<Portal>().willTele)
+        cd += Time.deltaTime;
+        if (teleBox)
+        {
+            Debug.Log(gameObject.name);
+            Debug.Log(willTele);
+        }
+
+        if (willTele && portalOut.gameObject.GetComponent<Portal>().willTele && teleBox)
         {
             teleBox.transform.position = portalOut.transform.position;
-            willTele = false;
-            portalOut.GetComponent<Portal>().willTele = false;
+            // willTele = false;
+            // portalOut.GetComponent<Portal>().willTele = false;
+            // teleBox = null;
+            
+            // if (cd >= cdMax)
+            // {      
+                // willTele = false;
+                // portalOut.GetComponent<Portal>().willTele = false;
+                // portalOut.GetComponent<Portal>().cd = 0;
+                // cd = 0;
+                // teleBox.transform.position = portalOut.transform.position;
+                // teleBox = null;
+            // }
         }
-        else
-        {
-            Debug.Log("no other portal");
-        }
-        // if (cd>=0 && )
 
     }
 }
