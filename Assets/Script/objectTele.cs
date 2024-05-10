@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 
 public class objectTele : MonoBehaviour
@@ -14,12 +15,20 @@ public class objectTele : MonoBehaviour
         private GameObject portal1;
         private GameObject portal2;
     }
+    private enum State
+    {
+        createPortal1,
+        createPortal2,
+        linkPortals,
+        destroyPortals,
+    }
+
+    private State currState;
     public List<teleZone> teleZones;
     [SerializeField] private float delayTime = 0.5f;
     [SerializeField] private float destroyTime = 0.5f;
 
     private float timer;
-    // private GameObject teleObject;
     private List<GameObject> portalList;
     [SerializeField] private GameObject portal1Instant;
     [SerializeField] private GameObject portal2Instant;
@@ -34,6 +43,7 @@ public class objectTele : MonoBehaviour
     {
         timer = 99;
         curr = teleZones.Count-1;
+        currState = State.createPortal1;
     }
 
     private GameObject token1;
@@ -43,30 +53,43 @@ public class objectTele : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= teleZones[curr].teleTime)
+        switch (currState)
         {
-            if (!token1)
+            case State.createPortal1:
             {
-                token1 = CreatePortal(portal1Instant,teleZones[curr].Portal1Loc);
+                if (timer >= teleZones[curr].teleTime)
+                {
+                    token1 = CreatePortal(portal1Instant, teleZones[curr].Portal1Loc);
+                    currState = State.createPortal2;
+                }
+
+                break;
             }
-            
-            if (timer >= teleZones[curr].teleTime + delayTime)
+            case State.createPortal2:
             {
-                if (!token2)
+                if (timer >= teleZones[curr].teleTime + delayTime)
                 {
                     token2 = CreatePortal(portal2Instant, teleZones[curr].Portal2Loc);
+                    currState = State.linkPortals;
                 }
 
-                if (token1 && token2 && canTele)
-                {
-                    token2.GetComponent<Portal>().portalOut = token1;
-                    token1.GetComponent<Portal>().portalOut = token2;
-                    
-                    token1.GetComponent<Portal>().willTele = true;
-                    token2.GetComponent<Portal>().willTele = true;
-                    canTele = false;
-                }
+                break;
+            }
+            case State.linkPortals:
+            {
+                token2.GetComponent<Portal>().portalOut = token1;
+                token1.GetComponent<Portal>().portalOut = token2;
 
+                token1.GetComponent<Portal>().willTele = true;
+                token2.GetComponent<Portal>().willTele = true;
+                // Debug.Log(token2.gameObject.GetComponent<Portal>().willTele);
+                canTele = false;
+                currState = State.destroyPortals;
+
+                break;
+            }
+            case State.destroyPortals:
+            {
                 if (timer >= teleZones[curr].teleTime + delayTime + destroyTime)
                 {
                     Destroy(token1);
@@ -78,8 +101,16 @@ public class objectTele : MonoBehaviour
                     {
                         curr = 0;
                     }
+
                     timer = 0;
+                    currState = State.createPortal1;
                 }
+                break;
+            }
+            default:
+            {
+                Debug.Log("Unknown state");
+                break;
             }
         }
     }

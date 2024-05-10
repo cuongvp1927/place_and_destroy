@@ -22,13 +22,13 @@ public class BoxChangeColor : MonoBehaviour
         foreach (var box in colorBoxes)
         {
             if (box.preFab.tag != "Objective")
-            {
-                box.preFab.active = false;
+            {                
+                box.preFab.SetActive(false);
             }
         }
 
         // to activate the prefab
-        nextPrefab.active = true;
+        nextPrefab.SetActive(true);;
 
     }
 
@@ -42,11 +42,11 @@ public class BoxChangeColor : MonoBehaviour
         {
             if (box.preFab.tag != "Objective")
             {
-                box.preFab.active = false;
+                box.preFab.SetActive(false);
             }
         }
         /// activate the original prefab
-        colorBoxes[0].preFab.active = true;
+        colorBoxes[0].preFab.SetActive(true);
 
     }
 

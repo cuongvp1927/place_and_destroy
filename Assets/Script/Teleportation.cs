@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,7 @@ public class Teleportation : MonoBehaviour
     {
         spawnIn,
         spawnOut,
+        allowingTele,
         portalDestroy,
     }
 
@@ -76,56 +78,80 @@ public class Teleportation : MonoBehaviour
         VictoryCheck(); // check for victory every frame, this function is called every frame
         
         // if already teleport, destroy both portal and reset the state to 1
-        if (currState == State.portalDestroy)
+        switch ( currState)
         {
-            if ((timer - teleDone) > portalDestroyInterval)
+            // if haven't spawn the first portal, create the first portal
+            case State.spawnIn:
             {
-                Destroy(portalIn);
-                Destroy(portalOut);
-                currState = State.spawnIn;
-            }
-        }
-        else
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector3 mousePos = Input.mousePosition;// take the position of the mouse and storing t 
-                Ray camRay = Camera.main.ScreenPointToRay(mousePos);// the position is translated to a place on the screen 
-                var rayHit = Physics2D.GetRayIntersection(camRay); // using the position to see any object with the collide
-                // if (rayHit.collider)
-                // {
-                //     return;
-                // }
-                Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos); // transform mousePos into usable variable
-                worldMousePos.z = 0f;
-                // if haven't spawn the first portal, create the first portal
-                if (currState == State.spawnIn)
+                if (Input.GetMouseButtonDown(0))
                 {
+                    Vector3 mousePos = Input.mousePosition; // take the position of the mouse and storing t 
+                    Ray camRay =
+                        Camera.main.ScreenPointToRay(mousePos); // the position is translated to a place on the screen 
+                    var rayHit =
+                        Physics2D.GetRayIntersection(camRay); // using the position to see any object with the collide
+
+                    Vector3 worldMousePos =
+                        Camera.main.ScreenToWorldPoint(mousePos); // transform mousePos into usable variable
+                    worldMousePos.z = 0f;
+                    
                     portalIn =  Instantiate<GameObject>(portalInInstant, worldMousePos, Quaternion.identity);
                     currState = State.spawnOut;
                 }
-                else
+
+                break;
+            }
+            // if haven't spawn the second portal, create the first portal, the make the teleport
+            case State.spawnOut:
+            {
+                if (Input.GetMouseButtonDown(0))
                 {
-                    // if haven't spawn the second portal, create the first portal, the make the teleport
-                    if (currState == State.spawnOut)
-                    {
-                        portalOut =  Instantiate<GameObject>(portalOutInstant, worldMousePos, Quaternion.identity);
-                        
-                        portalIn.GetComponent<Portal>().portalOut = portalOut;
-                        portalOut.GetComponent<Portal>().portalOut = portalIn;
-                        
-                        portalIn.GetComponent<Portal>().willTele = true;
-                        portalOut.GetComponent<Portal>().willTele = true;
-                        
-                        currState = State.portalDestroy;
-                        teleDone = timer;
-                        teleUsed();
-                        if (teleCount >= teleMax)
-                        {
-                            loseTimer = timer;
-                        }
-                    }
+                    Vector3 mousePos = Input.mousePosition; // take the position of the mouse and storing t 
+                    Ray camRay =
+                        Camera.main.ScreenPointToRay(mousePos); // the position is translated to a place on the screen 
+                    var rayHit =
+                        Physics2D.GetRayIntersection(camRay); // using the position to see any object with the collide
+
+                    Vector3 worldMousePos =
+                        Camera.main.ScreenToWorldPoint(mousePos); // transform mousePos into usable variable
+                    worldMousePos.z = 0f;
+                    
+                    portalOut =  Instantiate<GameObject>(portalOutInstant, worldMousePos, Quaternion.identity);
+                    currState = State.allowingTele;
                 }
+                break;
+            }
+            case State.allowingTele:
+            {
+                portalIn.GetComponent<Portal>().portalOut = portalOut;
+                portalOut.GetComponent<Portal>().portalOut = portalIn;
+            
+                portalIn.GetComponent<Portal>().willTele = true;
+                portalOut.GetComponent<Portal>().willTele = true;
+            
+                teleDone = timer;
+                teleUsed();
+                currState = State.portalDestroy;
+                if (teleCount >= teleMax)
+                {
+                    loseTimer = timer;
+                }
+                break;
+            }
+            case State.portalDestroy:
+            {
+                if ((timer - teleDone) > portalDestroyInterval)
+                {
+                    Destroy(portalIn);
+                    Destroy(portalOut);
+                    currState = State.spawnIn;
+                }
+                break;
+            }
+            default:
+            {
+                Debug.Log("Unknown state");
+                break;
             }
         }
         

@@ -24,8 +24,6 @@ public class LoseBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // when is lose is true;
-
         if (isLose)
         {
             Debug.Log("You lose");
