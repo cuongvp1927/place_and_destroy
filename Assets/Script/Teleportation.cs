@@ -131,6 +131,7 @@ public class Teleportation : MonoBehaviour
             
                 teleDone = timer;
                 teleUsed();
+                GameMasterSingleton.Instance.PlaySFX("ObjectTeleport");
                 currState = State.portalDestroy;
                 if (teleCount >= teleMax)
                 {
@@ -158,13 +159,15 @@ public class Teleportation : MonoBehaviour
         if (Input.GetButtonDown("Reset level"))
         {
             Debug.Log("You just press reset");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameMasterSingleton.Instance.ReloadScene();
         }
         
         if (isWin)
         {
             Debug.Log("You win");
             GameMasterSingleton.Instance.LoadNewScene("VictoryScene");
+            GameMasterSingleton.Instance.PlaySFX("Win");
             // SceneManager.LoadScene("VictoryScene");
         }
         if (isLose)
@@ -173,6 +176,7 @@ public class Teleportation : MonoBehaviour
             // string currentSceneName = SceneManager.GetActiveScene().name;
             // SceneManager.LoadScene(currentSceneName);
             GameMasterSingleton.Instance.LoadNewScene("LoseScene");
+            GameMasterSingleton.Instance.PlaySFX("Lose");
             // SceneManager.LoadScene("LoseScene");
         }
         

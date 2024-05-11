@@ -38,17 +38,18 @@ public class Box : MonoBehaviour{
             anim.SetBool("isTele", isTele);
         }
     }
-    
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         // Debug.Log(other.gameObject.tag);
-        if (this.gameObject.tag == "moveable")
+        if (gameObject.tag == "moveable")
         {
-            if (other.gameObject.tag == "Objective" || other.gameObject.tag=="bonus")
-            Destroy(other.gameObject);
+            if (other.gameObject.tag == "Objective" || other.gameObject.tag == "bonus")
+            {
+                Destroy(other.gameObject);
+                GameMasterSingleton.Instance.PlaySFX("DestroyObjective");
+            }
         }
-            
     }
 
 }

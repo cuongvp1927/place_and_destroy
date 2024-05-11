@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    // [SerializeField] private  int previousIndex;
-    // private void Start()
-    // {
-    //     previousIndex = SceneManager.GetActiveScene().buildIndex - 1;
-    // }
 
     public void SceneLoad(string sceneName)
     {
@@ -17,12 +12,11 @@ public class SceneLoader : MonoBehaviour
         GameMasterSingleton.Instance.LoadNewScene(sceneName);
     }
 
-    // public void nextScene()
-    // {
-    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    // }
-    
-    public void reloadScene()
+    public void ReloadScene()
+    {
+        GameMasterSingleton.Instance.ReloadScene();
+    }
+    public void LoadLastScene()
     {
         GameMasterSingleton.Instance.LoadLastScene();
     }

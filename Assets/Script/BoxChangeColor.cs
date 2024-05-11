@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BoxChangeColor : MonoBehaviour
 {
-
     [System.Serializable]
     public struct colorBox
     {

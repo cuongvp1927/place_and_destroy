@@ -17,6 +17,7 @@ public class Portal : MonoBehaviour
     {
         cd = 99;
         willTele = false;
+        GameMasterSingleton.Instance.PlaySFX("PortalCreate");
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -30,7 +31,6 @@ public class Portal : MonoBehaviour
         
         if (willTele && portalOut.gameObject.GetComponent<Portal>().willTele && teleBox)
         {
-            Debug.Log("teleport");
             teleBox.transform.position = portalOut.transform.position;
             willTele = false;
             portalOut.GetComponent<Portal>().willTele = false;

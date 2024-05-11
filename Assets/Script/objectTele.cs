@@ -85,7 +85,7 @@ public class objectTele : MonoBehaviour
                 // Debug.Log(token2.gameObject.GetComponent<Portal>().willTele);
                 // canTele = false;
                 currState = State.destroyPortals;
-
+                GameMasterSingleton.Instance.PlaySFX("ObjectTeleport");
                 break;
             }
             case State.destroyPortals:
