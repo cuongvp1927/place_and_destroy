@@ -83,7 +83,7 @@ public class objectTele : MonoBehaviour
                 token1.GetComponent<Portal>().willTele = true;
                 token2.GetComponent<Portal>().willTele = true;
                 // Debug.Log(token2.gameObject.GetComponent<Portal>().willTele);
-                canTele = false;
+                // canTele = false;
                 currState = State.destroyPortals;
 
                 break;
@@ -95,7 +95,7 @@ public class objectTele : MonoBehaviour
                     Destroy(token1);
                     Destroy(token2);
                     curr++;
-                    canTele = true;
+                    // canTele = true;
                     // reset curr to the start of the array
                     if (curr >= teleZones.Count)
                     {
