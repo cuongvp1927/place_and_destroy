@@ -154,6 +154,12 @@ public class Teleportation : MonoBehaviour
                 break;
             }
         }
+
+        if (Input.GetButtonDown("Reset level"))
+        {
+            Debug.Log("You just press reset");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         
         if (isWin)
         {
