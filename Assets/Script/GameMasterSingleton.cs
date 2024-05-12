@@ -12,7 +12,10 @@ public class GameMasterSingleton : MonoBehaviour
 
     public static GameMasterSingleton Instance
     {
-        get { return _instance; }
+        get
+        {
+            return _instance;
+        }
     }
 
     private void Awake()
@@ -38,7 +41,7 @@ public class GameMasterSingleton : MonoBehaviour
 
     public void LoadNewScene(string sceneName)
     {
-        _lastScene = _currScene;
+        _lastScene = SceneManager.GetActiveScene().name;
         _currScene = sceneName;
         SceneManager.LoadScene(_currScene);
     }
@@ -49,10 +52,14 @@ public class GameMasterSingleton : MonoBehaviour
     
     public void LoadLastScene()
     {
-        string token = _lastScene;
-        _lastScene = _currScene;
-        _currScene = token;
+        Debug.Log(_lastScene);
+        Debug.Log(_currScene);
+        _currScene = _lastScene;
+        _lastScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(_currScene);
+        
+        Debug.Log(_lastScene);
+        Debug.Log(_currScene);
         
     }
     
