@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
@@ -24,13 +25,18 @@ public class Teleportation : MonoBehaviour
     
     [SerializeField] int teleMax = 1; // maximum number of teleportation 
     private int teleCount = 0; // the current use of teleportation ( if we exceed the number of teleportation counts the player fails) 
-    public bool isWin = false; // if the playercompletes the level 
-    public bool isLose = false;// if the player fails the level
+    [HideInInspector] public bool isWin = false; // if the playercompletes the level 
+    [HideInInspector] public bool isLose = false;// if the player fails the level
     private float timer = 0;// the current time count for the level
     private float loseTimer = -1;// the time the player finish the final teleport
     private float teleDone = -1;// the time the player create the final portal, completing a teleport
     [SerializeField] private float loseInterval = 2; // the interval count to player losing the level
     [SerializeField] private float portalDestroyInterval = 0.5f; // the interval count to player losing the level
+    
+    // UI
+    [SerializeField] private GameObject timerText; // Timer text
+    [SerializeField] private GameObject teleportText; // Timer text
+    [SerializeField] private GameObject maxTeleText; // Timer text
 
     [SerializeField] private GameObject portalInInstant;
     [SerializeField] private GameObject portalOutInstant;
@@ -75,6 +81,17 @@ public class Teleportation : MonoBehaviour
     void Update()// for the rest of the frames 
     {
         timer += Time.deltaTime;// updating the the counter for the time passed
+        int second = Mathf.FloorToInt(timer/60);
+        int minute = Mathf.FloorToInt(timer%60);
+        timerText.GetComponent<TextMeshProUGUI>().text = string.Format("{0:00} : {1:00}", second, minute);
+        
+        // show current teleport used
+        teleportText.GetComponent<TextMeshProUGUI>().text = teleCount.ToString();
+        
+        // show maximum teleport used
+        maxTeleText.GetComponent<TextMeshProUGUI>().text = teleMax.ToString();
+        
+        
         VictoryCheck(); // check for victory every frame, this function is called every frame
         
         // if already teleport, destroy both portal and reset the state to 1

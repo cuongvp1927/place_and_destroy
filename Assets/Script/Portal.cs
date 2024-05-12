@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    [HideInInspector] public GameObject portalOut = null;
+    public GameObject portalOut;
 
     public float cd;
     [SerializeField] private float cdMax = 1;

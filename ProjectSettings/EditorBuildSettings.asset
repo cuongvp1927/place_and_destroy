@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level3.unity
     guid: 8611265afbe4f94438dfc58c1cee819a
+  - enabled: 1
+    path: Assets/Scenes/CheatVictoryScene.unity
+    guid: e6627ae1948282e4baea2d9497271ec9
   m_configObjects: {}
