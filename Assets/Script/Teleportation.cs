@@ -166,7 +166,7 @@ public class Teleportation : MonoBehaviour
         if (isWin)
         {
             Debug.Log("You win");
-            GameMasterSingleton.Instance.LoadNewScene("VictoryScene");
+            GameMasterSingleton.Instance.LoadVictory();
             GameMasterSingleton.Instance.PlaySFX("Win");
             // SceneManager.LoadScene("VictoryScene");
         }

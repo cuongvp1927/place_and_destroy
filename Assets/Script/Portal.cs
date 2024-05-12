@@ -12,6 +12,8 @@ public class Portal : MonoBehaviour
     [HideInInspector] public bool willTele;
     private GameObject teleBox = null;
     
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,11 @@ public class Portal : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    { 
+    {
+        if (gameObject.tag == "portal" && other.gameObject.tag != "moveable")
+        {
+            GameMasterSingleton.Instance.isCheated = true;
+        }
         teleBox = other.gameObject;
     }
     // Update is called once per frame
@@ -36,6 +42,5 @@ public class Portal : MonoBehaviour
             portalOut.GetComponent<Portal>().willTele = false;
             teleBox = null;
         }
-
     }
 }

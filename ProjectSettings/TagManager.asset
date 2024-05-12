@@ -10,6 +10,8 @@ TagManager:
   - teleLocate
   - bonus
   - portal
+  - LevelPortal
+  - playerPortal
   layers:
   - Default
   - TransparentFX

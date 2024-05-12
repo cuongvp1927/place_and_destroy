@@ -1286,6 +1286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleMax: 1
+  isWin: 0
+  isLose: 0
   loseInterval: 1
   portalDestroyInterval: 0.5
   portalInInstant: {fileID: 6615532247470268208, guid: 123571541dd5da64dad48b89ae26d089, type: 3}
@@ -1513,8 +1515,8 @@ MonoBehaviour:
     Portal2Loc: {fileID: 416592715}
   delayTime: 0.25
   destroyTime: 1.5
-  portal1Instant: {fileID: 6615532247470268208, guid: 123571541dd5da64dad48b89ae26d089, type: 3}
-  portal2Instant: {fileID: 6871300760292388243, guid: c622d614f394f554d8126ef726cce494, type: 3}
+  portal1Instant: {fileID: 6615532247470268208, guid: 94a203c2a87d2e3499cc234c806f978d, type: 3}
+  portal2Instant: {fileID: 6871300760292388243, guid: fa9b27c1cf701064baa1ad564065937a, type: 3}
 --- !u!1 &1214386971
 GameObject:
   m_ObjectHideFlags: 0

@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24, y: 321}
+  m_AnchoredPosition: {x: 24, y: 349}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &22759434
@@ -690,7 +690,7 @@ Transform:
   m_GameObject: {fileID: 921835381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.04, y: -1.37, z: 0}
+  m_LocalPosition: {x: -7.14, y: -1.37, z: 0}
   m_LocalScale: {x: 0.901, y: 0.901, z: 0.901}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1560,7 +1560,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have taken the first step to become a mad scientist
+  m_text: Ah, I see you have found a way to break the rule. That's the spirit, you
+    now have taken the first step to be the mad scientist
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f46253a022a6ef74c994b4ce27933990, type: 2}
   m_sharedMaterial: {fileID: -7657769775541786749, guid: f46253a022a6ef74c994b4ce27933990, type: 2}
@@ -1587,8 +1588,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 9
+  m_fontSizeBase: 9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1623,7 +1624,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -34.69497, y: 0, z: -31.700142, w: 0}
+  m_margin: {x: -42.092766, y: 0, z: -41.823418, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1664,7 +1665,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1956.2861}
-  m_LocalScale: {x: 131.56491, y: 105.6791, z: 141.00688}
+  m_LocalScale: {x: 156.06361, y: 119.57593, z: 175.32893}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1592342260}

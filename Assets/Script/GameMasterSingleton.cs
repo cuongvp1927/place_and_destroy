@@ -39,15 +39,35 @@ public class GameMasterSingleton : MonoBehaviour
         return _lastScene;
     }
 
+    public bool isCheated = false;
+    
     public void LoadNewScene(string sceneName)
     {
         _lastScene = SceneManager.GetActiveScene().name;
         _currScene = sceneName;
         SceneManager.LoadScene(_currScene);
+        isCheated = false;
+    }
+
+    public void LoadVictory()
+    {
+        _lastScene = SceneManager.GetActiveScene().name;
+        _currScene = "VictoryScene";
+        if (!isCheated)
+        {
+            SceneManager.LoadScene("VictoryScene");
+            isCheated = false;
+        }
+        else
+        {
+            SceneManager.LoadScene("CheatVictoryScene");
+            isCheated = false;
+        }
     }
     public void ReloadScene()
     {
         SceneManager.LoadScene(_currScene);
+        isCheated = false;
     }
     
     public void LoadLastScene()
