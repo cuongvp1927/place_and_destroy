@@ -21,8 +21,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 1.unity
     guid: 5ac67724a5d210044bcb7a66875367df
   - enabled: 1
+    path: Assets/Scenes/Tutorial-Level-2.unity
+    guid: d3b61d7822b01499ba5b0f772d6d696b
+  - enabled: 1
     path: Assets/Scenes/Level_2.unity
     guid: 62bfe36df3d1242899621d23d586cfe2
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 8611265afbe4f94438dfc58c1cee819a
   - enabled: 1
     path: Assets/Scenes/Level4Scn.unity
     guid: 818c2d74b0f2d2d468f4b676ea07e6d5
@@ -30,20 +36,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Level4Scn2.unity
     guid: 414902e479ff741459663f66d13df036
   - enabled: 1
-    path: Assets/Scenes/VictoryScene.unity
-    guid: f324abe4ab7efc04c88f22fd5707aee3
+    path: Assets/Scenes/Level4Scn3.unity
+    guid: 9bd7880a27730b84fa083708b915cf45
+  - enabled: 1
+    path: Assets/Scenes/Level4Scn4.unity
+    guid: f1f90f836fbee6a44916357f09e0a0c5
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: caf8279553b78e0428e5bce5f31ded3a
   - enabled: 1
-    path: Assets/Scenes/Level_2.unity
-    guid: 62bfe36df3d1242899621d23d586cfe2
+    path: Assets/Scenes/VictoryScene.unity
+    guid: f324abe4ab7efc04c88f22fd5707aee3
   - enabled: 1
-    path: Assets/Scenes/Level 1.unity
-    guid: 5ac67724a5d210044bcb7a66875367df
-  - enabled: 1
-    path: Assets/Scenes/Level3.unity
-    guid: 8611265afbe4f94438dfc58c1cee819a
+    path: Assets/Scenes/SceneNotFound.unity
+    guid: 64e1d1f2ffb156b408bb3619e8b71828
   - enabled: 1
     path: Assets/Scenes/CheatVictoryScene.unity
     guid: e6627ae1948282e4baea2d9497271ec9

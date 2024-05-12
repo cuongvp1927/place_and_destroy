@@ -24,11 +24,15 @@ public class Portal : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (gameObject.tag == "portal" && other.gameObject.tag != "moveable")
+        if (gameObject.CompareTag("portal") && !other.gameObject.CompareTag("moveable") )
         {
             GameMasterSingleton.Instance.isCheated = true;
         }
-        teleBox = other.gameObject;
+
+        if (other.gameObject.CompareTag("moveable") || other.gameObject.CompareTag("Objective"))
+        {
+            teleBox = other.gameObject;
+        }
     }
     // Update is called once per frame
     void Update()
